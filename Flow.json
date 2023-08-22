@@ -1,0 +1,590 @@
+[
+    {
+        "id": "937a93a68b0f3247",
+        "type": "function",
+        "z": "dd9ffc53b11421c8",
+        "name": "function 34",
+        "func": "msg.payload = {\n    group: {\n        show: [\"Temperature_Temperature\", \"Temperature_Temperaturee\"],\n        hide: [\"Temperature_Temperatureee\"]\n    }\n};\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 110,
+        "y": 420,
+        "wires": [
+            [
+                "df22090952a1bc49",
+                "142f58c84691ac64"
+            ]
+        ]
+    },
+    {
+        "id": "363bebbb2456aa75",
+        "type": "ui_dropdown",
+        "z": "dd9ffc53b11421c8",
+        "name": "",
+        "label": "",
+        "tooltip": "",
+        "place": "Select option",
+        "group": "c007541f07639577",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "multiple": false,
+        "options": [
+            {
+                "label": "C to F",
+                "value": true,
+                "type": "bool"
+            },
+            {
+                "label": "F to C",
+                "value": false,
+                "type": "bool"
+            }
+        ],
+        "payload": "",
+        "topic": "topic",
+        "topicType": "msg",
+        "className": "",
+        "x": 280,
+        "y": 600,
+        "wires": [
+            [
+                "54ddabb29e1a7460"
+            ]
+        ]
+    },
+    {
+        "id": "54ddabb29e1a7460",
+        "type": "switch",
+        "z": "dd9ffc53b11421c8",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "true"
+            },
+            {
+                "t": "false"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 430,
+        "y": 600,
+        "wires": [
+            [
+                "ec722819367ecabd"
+            ],
+            [
+                "d4d6c9cd037aca06"
+            ]
+        ]
+    },
+    {
+        "id": "ec722819367ecabd",
+        "type": "change",
+        "z": "dd9ffc53b11421c8",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\"group\":{\"show\":[\"Temperature_Temperaturee\"],\"hide\":[\"Temperature_Temperatureee\"]}}",
+                "tot": "json"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 600,
+        "y": 580,
+        "wires": [
+            [
+                "882c88bd9a71bcf8"
+            ]
+        ]
+    },
+    {
+        "id": "d4d6c9cd037aca06",
+        "type": "change",
+        "z": "dd9ffc53b11421c8",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\"group\":{\"show\":[\"Temperature_Temperatureee\"],\"hide\":[\"Temperature_Temperaturee\"]}}",
+                "tot": "json"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 600,
+        "y": 620,
+        "wires": [
+            [
+                "882c88bd9a71bcf8"
+            ]
+        ]
+    },
+    {
+        "id": "882c88bd9a71bcf8",
+        "type": "ui_ui_control",
+        "z": "dd9ffc53b11421c8",
+        "name": "",
+        "events": "all",
+        "x": 780,
+        "y": 600,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "df22090952a1bc49",
+        "type": "ui_text_input",
+        "z": "dd9ffc53b11421c8",
+        "name": "",
+        "label": "Enter Number in Celcius",
+        "tooltip": "",
+        "group": "70f3c04cba817a91",
+        "order": 3,
+        "width": 6,
+        "height": 1,
+        "passthru": true,
+        "mode": "number",
+        "delay": 300,
+        "topic": "topic",
+        "sendOnBlur": true,
+        "className": "",
+        "topicType": "msg",
+        "x": 330,
+        "y": 400,
+        "wires": [
+            [
+                "4c5f18b73666285d"
+            ]
+        ]
+    },
+    {
+        "id": "142f58c84691ac64",
+        "type": "ui_text_input",
+        "z": "dd9ffc53b11421c8",
+        "name": "",
+        "label": "Enter Number in Fahrenheit",
+        "tooltip": "",
+        "group": "3a34ec9aaf08858b",
+        "order": 3,
+        "width": 6,
+        "height": 1,
+        "passthru": true,
+        "mode": "number",
+        "delay": 300,
+        "topic": "topic",
+        "sendOnBlur": true,
+        "className": "",
+        "topicType": "msg",
+        "x": 340,
+        "y": 440,
+        "wires": [
+            [
+                "dd219292c0bebd06"
+            ]
+        ]
+    },
+    {
+        "id": "c8d359a805b7aeed",
+        "type": "ui_gauge",
+        "z": "dd9ffc53b11421c8",
+        "name": "",
+        "group": "70f3c04cba817a91",
+        "order": 1,
+        "width": 6,
+        "height": 4,
+        "gtype": "gage",
+        "title": "Celcius To Fahrenheit ",
+        "label": "units",
+        "format": "{{value}}",
+        "min": "-100",
+        "max": "100",
+        "colors": [
+            "#5b0ced",
+            "#00aaff",
+            "#ff0000"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "diff": false,
+        "className": "",
+        "x": 1020,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "0c30d2e3a073644d",
+        "type": "ui_gauge",
+        "z": "dd9ffc53b11421c8",
+        "name": "",
+        "group": "3a34ec9aaf08858b",
+        "order": 1,
+        "width": 6,
+        "height": 4,
+        "gtype": "gage",
+        "title": "Fahrenheit To Celcius  ",
+        "label": "units",
+        "format": "{{value}}",
+        "min": "-100",
+        "max": "100",
+        "colors": [
+            "#00b500",
+            "#f4f42a",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "diff": false,
+        "className": "",
+        "x": 1020,
+        "y": 500,
+        "wires": []
+    },
+    {
+        "id": "3bd29a0638c0dd10",
+        "type": "ui_switch",
+        "z": "dd9ffc53b11421c8",
+        "name": "",
+        "label": "Converter ",
+        "tooltip": "",
+        "group": "c007541f07639577",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "decouple": "false",
+        "topic": "topic",
+        "topicType": "msg",
+        "style": "",
+        "onvalue": "true",
+        "onvalueType": "bool",
+        "onicon": "",
+        "oncolor": "",
+        "offvalue": "false",
+        "offvalueType": "bool",
+        "officon": "",
+        "offcolor": "",
+        "animate": false,
+        "className": "",
+        "x": 140,
+        "y": 600,
+        "wires": [
+            [
+                "363bebbb2456aa75"
+            ]
+        ]
+    },
+    {
+        "id": "1960e441a2117633",
+        "type": "unit-converter",
+        "z": "dd9ffc53b11421c8",
+        "category": "temperature",
+        "inputUnit": "C",
+        "outputUnit": "F",
+        "inputField": "payload",
+        "outputField": "payload",
+        "inputFieldType": "msg",
+        "outputFieldType": "msg",
+        "roundOutputField": true,
+        "outputFieldDecimals": 2,
+        "statusType": "none",
+        "name": "Celsius To Fahrenheit  ",
+        "x": 760,
+        "y": 400,
+        "wires": [
+            [
+                "c8d359a805b7aeed",
+                "669cc1be0e720a4d",
+                "e9938d4533d49804",
+                "37ebcbc4579a1e22"
+            ]
+        ]
+    },
+    {
+        "id": "a6f187e48602f5b0",
+        "type": "unit-converter",
+        "z": "dd9ffc53b11421c8",
+        "category": "temperature",
+        "inputUnit": "F",
+        "outputUnit": "C",
+        "inputField": "payload",
+        "outputField": "payload",
+        "inputFieldType": "msg",
+        "outputFieldType": "msg",
+        "roundOutputField": true,
+        "outputFieldDecimals": 2,
+        "statusType": "none",
+        "name": "Fahrenheit To Celsius ",
+        "x": 760,
+        "y": 440,
+        "wires": [
+            [
+                "0c30d2e3a073644d",
+                "37ebcbc4579a1e22",
+                "1532d688e5cce30e",
+                "ee089c7dd6d2a9f3"
+            ]
+        ]
+    },
+    {
+        "id": "4c5f18b73666285d",
+        "type": "ui_slider",
+        "z": "dd9ffc53b11421c8",
+        "name": "",
+        "label": "slider",
+        "tooltip": "",
+        "group": "70f3c04cba817a91",
+        "order": 4,
+        "width": 6,
+        "height": 1,
+        "passthru": true,
+        "outs": "end",
+        "topic": "topic",
+        "topicType": "msg",
+        "min": "-100",
+        "max": "100",
+        "step": "5",
+        "className": "",
+        "x": 550,
+        "y": 400,
+        "wires": [
+            [
+                "1960e441a2117633"
+            ]
+        ]
+    },
+    {
+        "id": "669cc1be0e720a4d",
+        "type": "ui_chart",
+        "z": "dd9ffc53b11421c8",
+        "name": "",
+        "group": "70f3c04cba817a91",
+        "order": 2,
+        "width": 6,
+        "height": 4,
+        "label": "Monitoring",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 990,
+        "y": 300,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "37ebcbc4579a1e22",
+        "type": "ui_toast",
+        "z": "dd9ffc53b11421c8",
+        "position": "top right",
+        "displayTime": "3",
+        "highlight": "",
+        "sendall": true,
+        "outputs": 0,
+        "ok": "OK",
+        "cancel": "",
+        "raw": false,
+        "className": "",
+        "topic": "",
+        "name": "",
+        "x": 1190,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "dd219292c0bebd06",
+        "type": "ui_slider",
+        "z": "dd9ffc53b11421c8",
+        "name": "",
+        "label": "slider",
+        "tooltip": "",
+        "group": "3a34ec9aaf08858b",
+        "order": 4,
+        "width": 6,
+        "height": 1,
+        "passthru": true,
+        "outs": "end",
+        "topic": "topic",
+        "topicType": "msg",
+        "min": "-100",
+        "max": "100",
+        "step": "5",
+        "className": "",
+        "x": 550,
+        "y": 440,
+        "wires": [
+            [
+                "a6f187e48602f5b0"
+            ]
+        ]
+    },
+    {
+        "id": "1532d688e5cce30e",
+        "type": "ui_chart",
+        "z": "dd9ffc53b11421c8",
+        "name": "",
+        "group": "3a34ec9aaf08858b",
+        "order": 2,
+        "width": 6,
+        "height": 4,
+        "label": "Monitoring",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 990,
+        "y": 540,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "e9938d4533d49804",
+        "type": "function",
+        "z": "dd9ffc53b11421c8",
+        "name": "function 35",
+        "func": "msg.topic = \"Fahreheit:\"\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 990,
+        "y": 380,
+        "wires": [
+            [
+                "37ebcbc4579a1e22"
+            ]
+        ]
+    },
+    {
+        "id": "ee089c7dd6d2a9f3",
+        "type": "function",
+        "z": "dd9ffc53b11421c8",
+        "name": "function 36",
+        "func": "msg.topic = \"Celcius:\"\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 990,
+        "y": 460,
+        "wires": [
+            [
+                "37ebcbc4579a1e22"
+            ]
+        ]
+    },
+    {
+        "id": "c007541f07639577",
+        "type": "ui_group",
+        "name": "Temperature",
+        "tab": "5f762ea1a4b4b8c8",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "70f3c04cba817a91",
+        "type": "ui_group",
+        "name": "Temperaturee",
+        "tab": "5f762ea1a4b4b8c8",
+        "order": 2,
+        "disp": true,
+        "width": 12,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "3a34ec9aaf08858b",
+        "type": "ui_group",
+        "name": "Temperatureee",
+        "tab": "5f762ea1a4b4b8c8",
+        "order": 3,
+        "disp": true,
+        "width": 12,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "5f762ea1a4b4b8c8",
+        "type": "ui_tab",
+        "name": "Temperature",
+        "icon": "dashboard",
+        "order": 1,
+        "disabled": false,
+        "hidden": false
+    }
+]
